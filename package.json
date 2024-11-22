@@ -1,17 +1,13 @@
 {
-  "name": "react-template",
-  "version": "1.1.0",
-  "description": "A template project for Node/React projects",
+  "name": "pws-groeps-indeling-algoritme",
+  "version": "1.0.1",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "node --watch index.js"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "dotenv": "^16.4.5",
-    "ejs": "^3.1.10",
-    "express": "^4.21.0",
-    "express-async-handler": "^1.2.0"
-  }
+  "description": ""
 }
