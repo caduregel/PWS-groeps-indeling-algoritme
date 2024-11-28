@@ -154,6 +154,13 @@
         "friends": [23, 35, 20]
     },
     {
+        "id": 28,
+        "gender": "boy",
+        "cognitive_level": 3,
+        "behavioral_difficulty": 2,
+        "friends": [29, 1, 26]
+    },
+    {
         "id": 23,
         "gender": "girl",
         "cognitive_level": 3,
@@ -189,11 +196,11 @@
         "friends": [28, 40, 25]
     },
     {
-        "id": 28,
+        "id": 32,
         "gender": "boy",
-        "cognitive_level": 3,
+        "cognitive_level": 2,
         "behavioral_difficulty": 2,
-        "friends": [29, 1, 26]
+        "friends": [33, 5, 30]
     },
     {
         "id": 29,
@@ -216,13 +223,7 @@
         "behavioral_difficulty": 5,
         "friends": [32, 4, 29]
     },
-    {
-        "id": 32,
-        "gender": "boy",
-        "cognitive_level": 2,
-        "behavioral_difficulty": 2,
-        "friends": [33, 5, 30]
-    },
+    
     {
         "id": 33,
         "gender": "girl",

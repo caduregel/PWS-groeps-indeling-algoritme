@@ -1,76 +1,64 @@
-const allStudents = require('./students.json');
-const { AllStudentsGrouped } = require('./test');
+const allStudents = require('./students2.json');
+const { checkTwoFriends, checkFriendInGroup } = require('./Helpers/checks');
+const testFunction = require('./test');
+const shuffle = require('./Helpers/shuffle');
+// const { AllStudentsGrouped } = require('./test');
 
-// Function that checks if a student has friends in a group
-const checkFriendInGroup = (student, group) => {
-    const friendsId = [...student.friends]
-    for (let i = 0; i < group.length;) {
-        if (friendsId.includes(group[i])) {
-            return true
-        }
-        else {
-            return false;
-        }
-    }
-}
-
-// Helper function which checks if two students are friends with eachother
-const checkTwoFriends = (studentOne, studentTwo) => {
-    const studentOneFriendsId = [...studentOne.friends]
-    if (studentOneFriendsId.includes(studentTwo.id)) {
-        return true
-    } else {
-        return false
-    }
-}
 
 // V1, only sorts based on friendship preference, does not allow students to exclude friends
-function sortStudents(students) {
-    // Two groups
-    let groupOne = []
-    let groupTwo = []
+function sortStudents(astudents) {
+    let groupOne = [];
+    let groupTwo = [];
 
-    // For loop which iterates over all students and sorts them into the appropiate groups
+    let students  = astudents
+    shuffle(students)
+
+    const isStudentInGroup = (studentId, group) => group.includes(studentId);
+
     for (let i = 0; i < students.length; i++) {
-        const student = students[i]
+        const student = students[i];
 
-        // Case one: A friend is found in both groups
+        if (isStudentInGroup(student.id, groupOne) || isStudentInGroup(student.id, groupTwo)){
+            continue;
+        }
+    
+        // Case One: A friend is found in both groups
         if (checkFriendInGroup(student, groupOne) && checkFriendInGroup(student, groupTwo)) {
-            if (groupOne.length > groupTwo.length) {
-                groupTwo.push(student.id)
-                continue;
-            } else {
-                groupOne.push(student.id)
-                continue;
-            }
+            groupOne.length > groupTwo.length ? groupTwo.push(student.id) : groupOne.push(student.id);
+            continue;
+        }
 
-            // Case two: A friend is only found in group one on group two
-        } else if (checkFriendInGroup(student, groupOne)) {
-            groupOne.push(student.id)
+        // Case Two: A friend is found in one group
+        if (checkFriendInGroup(student, groupOne)) {
+            groupOne.push(student.id);
             continue;
         } else if (checkFriendInGroup(student, groupTwo)) {
-            groupTwo.push(student.id)
+            groupTwo.push(student.id);
             continue;
         }
 
-        // Case Three: no friend is in either group:
+        // Case Three: No friends in either group
+        let added = false;
         for (let j = i + 1; j < students.length; j++) {
-            const studentTwo = students[j]
+            const studentTwo = students[j];
             if (checkTwoFriends(student, studentTwo)) {
-                groupOne.length > groupTwo.length ? groupTwo.push(student.id, studentTwo.id) : groupOne.push(student.id, studentTwo.id)
+                groupOne.length > groupTwo.length
+                    ? groupTwo.push(student.id, studentTwo.id)
+                    : groupOne.push(student.id, studentTwo.id);
+                added = true;
                 break;
-            } else {
-                continue;
             }
         }
 
+        // Fallback: Add student to the smaller group if no match is found
+        // if (!added) {
+        //     groupOne.length <= groupTwo.length ? groupOne.push(student.id) : groupTwo.push(student.id);
+        // }
     }
 
-    console.log(groupOne, groupTwo)
-    console.log(groupOne.length, groupTwo.length)
-    console.log(AllStudentsGrouped(allStudents, groupOne, groupTwo))
-    return ({ groupOne, groupTwo })
+    console.log(groupOne, groupTwo);
+    console.log(testFunction(allStudents, groupOne, groupTwo))
+    return { groupOne, groupTwo };
 }
-
 
 sortStudents(allStudents)
