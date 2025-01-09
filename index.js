@@ -1,8 +1,7 @@
-const allStudents = require('./students2.json');
+const allStudents = require('./students1.json');
 const { checkTwoFriends, checkFriendInGroup } = require('./Helpers/checks');
 const testFunction = require('./test');
 const shuffle = require('./Helpers/shuffle');
-// const { AllStudentsGrouped } = require('./test');
 
 
 // V1, only sorts based on friendship preference, does not allow students to exclude friends
@@ -10,7 +9,7 @@ function sortStudents(astudents) {
     let groupOne = [];
     let groupTwo = [];
 
-    let students  = astudents
+    let students = astudents
     shuffle(students)
 
     const isStudentInGroup = (studentId, group) => group.includes(studentId);
@@ -18,10 +17,10 @@ function sortStudents(astudents) {
     for (let i = 0; i < students.length; i++) {
         const student = students[i];
 
-        if (isStudentInGroup(student.id, groupOne) || isStudentInGroup(student.id, groupTwo)){
+        if (isStudentInGroup(student.id, groupOne) || isStudentInGroup(student.id, groupTwo)) {
             continue;
         }
-    
+
         // Case One: A friend is found in both groups
         if (checkFriendInGroup(student, groupOne) && checkFriendInGroup(student, groupTwo)) {
             groupOne.length > groupTwo.length ? groupTwo.push(student.id) : groupOne.push(student.id);
@@ -51,14 +50,26 @@ function sortStudents(astudents) {
         }
 
         // Fallback: Add student to the smaller group if no match is found
-        // if (!added) {
-        //     groupOne.length <= groupTwo.length ? groupOne.push(student.id) : groupTwo.push(student.id);
-        // }
+        if (!added) {
+            groupOne.length <= groupTwo.length ? groupOne.push(student.id) : groupTwo.push(student.id);
+        }
     }
 
-    console.log(groupOne, groupTwo);
-    console.log(testFunction(allStudents, groupOne, groupTwo))
-    return { groupOne, groupTwo };
+    return [groupOne, groupTwo];
 }
 
-sortStudents(allStudents)
+let acceptableGroup = false;
+
+let iterations = 0
+
+while (acceptableGroup == false) {
+    iterations++
+    [groupOne, groupTwo] = sortStudents(allStudents)
+    // console.log(acceptableGroup)
+    if (testFunction(allStudents, groupOne, groupTwo).allStudentsHaveFriends == true) {
+        acceptableGroup = true
+    }
+}
+
+console.log(testFunction(allStudents, groupOne, groupTwo))
+console.log("iterations for this outcome: " + iterations)

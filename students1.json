@@ -1,0 +1,352 @@
+[
+    {
+        "id": 1,
+        "gender": "boy",
+        "cognitive_level": "Advanced",
+        "behavioral_difficulty": 2,
+        "friends": [2, 3, 4]
+    },
+    {
+        "id": 2,
+        "gender": "girl",
+        "cognitive_level": "Intermediate",
+        "behavioral_difficulty": 3,
+        "friends": [1, 4, 5]
+    },
+    {
+        "id": 3,
+        "gender": "boy",
+        "cognitive_level": "Basic",
+        "behavioral_difficulty": 1,
+        "friends": [1, 2, 6]
+    },
+    {
+        "id": 4,
+        "gender": "girl",
+        "cognitive_level": "Advanced",
+        "behavioral_difficulty": 2,
+        "friends": [1, 2, 7]
+    },
+    {
+        "id": 5,
+        "gender": "boy",
+        "cognitive_level": "Intermediate",
+        "behavioral_difficulty": 1,
+        "friends": [2, 6, 7]
+    },
+    {
+        "id": 6,
+        "gender": "girl",
+        "cognitive_level": "Basic",
+        "behavioral_difficulty": 3,
+        "friends": [3, 5, 8]
+    },
+    {
+        "id": 7,
+        "gender": "boy",
+        "cognitive_level": "Advanced",
+        "behavioral_difficulty": 1,
+        "friends": [4, 5, 8]
+    },
+    {
+        "id": 8,
+        "gender": "girl",
+        "cognitive_level": "Intermediate",
+        "behavioral_difficulty": 2,
+        "friends": [6, 7, 3]
+    },
+    {
+        "id": 9,
+        "gender": "boy",
+        "cognitive_level": "Advanced",
+        "behavioral_difficulty": 3,
+        "friends": [10, 11, 12]
+    },
+    {
+        "id": 10,
+        "gender": "girl",
+        "cognitive_level": "Intermediate",
+        "behavioral_difficulty": 2,
+        "friends": [9, 13, 14]
+    },
+    {
+        "id": 11,
+        "gender": "boy",
+        "cognitive_level": "Basic",
+        "behavioral_difficulty": 4,
+        "friends": [9, 12, 15]
+    },
+    {
+        "id": 12,
+        "gender": "girl",
+        "cognitive_level": "Advanced",
+        "behavioral_difficulty": 1,
+        "friends": [9, 11, 16]
+    },
+    {
+        "id": 13,
+        "gender": "boy",
+        "cognitive_level": "Intermediate",
+        "behavioral_difficulty": 2,
+        "friends": [10, 14, 17]
+    },
+    {
+        "id": 14,
+        "gender": "girl",
+        "cognitive_level": "Basic",
+        "behavioral_difficulty": 1,
+        "friends": [10, 13, 18]
+    },
+    {
+        "id": 15,
+        "gender": "boy",
+        "cognitive_level": "Advanced",
+        "behavioral_difficulty": 2,
+        "friends": [11, 16, 17]
+    },
+    {
+        "id": 16,
+        "gender": "girl",
+        "cognitive_level": "Intermediate",
+        "behavioral_difficulty": 1,
+        "friends": [12, 15, 18]
+    },
+    {
+        "id": 17,
+        "gender": "boy",
+        "cognitive_level": "Basic",
+        "behavioral_difficulty": 3,
+        "friends": [13, 15, 19]
+    },
+    {
+        "id": 18,
+        "gender": "girl",
+        "cognitive_level": "Advanced",
+        "behavioral_difficulty": 1,
+        "friends": [14, 16, 20]
+    },
+    {
+        "id": 19,
+        "gender": "boy",
+        "cognitive_level": "Intermediate",
+        "behavioral_difficulty": 4,
+        "friends": [17, 20, 21]
+    },
+    {
+        "id": 20,
+        "gender": "girl",
+        "cognitive_level": "Basic",
+        "behavioral_difficulty": 2,
+        "friends": [18, 19, 22]
+    },
+    {
+        "id": 21,
+        "gender": "boy",
+        "cognitive_level": "Advanced",
+        "behavioral_difficulty": 3,
+        "friends": [19, 22, 23]
+    },
+    {
+        "id": 22,
+        "gender": "girl",
+        "cognitive_level": "Intermediate",
+        "behavioral_difficulty": 1,
+        "friends": [20, 21, 24]
+    },
+    {
+        "id": 23,
+        "gender": "boy",
+        "cognitive_level": "Basic",
+        "behavioral_difficulty": 2,
+        "friends": [21, 24, 25]
+    },
+    {
+        "id": 24,
+        "gender": "girl",
+        "cognitive_level": "Advanced",
+        "behavioral_difficulty": 2,
+        "friends": [22, 23, 26]
+    },
+    {
+        "id": 25,
+        "gender": "boy",
+        "cognitive_level": "Intermediate",
+        "behavioral_difficulty": 3,
+        "friends": [23, 26, 27]
+    },
+    {
+        "id": 26,
+        "gender": "girl",
+        "cognitive_level": "Basic",
+        "behavioral_difficulty": 4,
+        "friends": [24, 25, 28]
+    },
+    {
+        "id": 27,
+        "gender": "boy",
+        "cognitive_level": "Advanced",
+        "behavioral_difficulty": 1,
+        "friends": [25, 28, 29]
+    },
+    {
+        "id": 28,
+        "gender": "girl",
+        "cognitive_level": "Intermediate",
+        "behavioral_difficulty": 2,
+        "friends": [26, 27, 30]
+    },
+    {
+        "id": 29,
+        "gender": "boy",
+        "cognitive_level": "Basic",
+        "behavioral_difficulty": 5,
+        "friends": [27, 30, 31]
+    },
+    {
+        "id": 30,
+        "gender": "girl",
+        "cognitive_level": "Advanced",
+        "behavioral_difficulty": 2,
+        "friends": [28, 29, 32]
+    },
+    {
+        "id": 31,
+        "gender": "boy",
+        "cognitive_level": "Intermediate",
+        "behavioral_difficulty": 3,
+        "friends": [29, 32, 33]
+    },
+    {
+        "id": 32,
+        "gender": "girl",
+        "cognitive_level": "Basic",
+        "behavioral_difficulty": 1,
+        "friends": [30, 31, 34]
+    },
+    {
+        "id": 33,
+        "gender": "boy",
+        "cognitive_level": "Advanced",
+        "behavioral_difficulty": 3,
+        "friends": [31, 34, 35]
+    },
+    {
+        "id": 34,
+        "gender": "girl",
+        "cognitive_level": "Intermediate",
+        "behavioral_difficulty": 2,
+        "friends": [32, 33, 36]
+    },
+    {
+        "id": 35,
+        "gender": "boy",
+        "cognitive_level": "Basic",
+        "behavioral_difficulty": 4,
+        "friends": [33, 36, 37]
+    },
+    {
+        "id": 36,
+        "gender": "girl",
+        "cognitive_level": "Advanced",
+        "behavioral_difficulty": 1,
+        "friends": [34, 35, 38]
+    },
+    {
+        "id": 37,
+        "gender": "boy",
+        "cognitive_level": "Intermediate",
+        "behavioral_difficulty": 5,
+        "friends": [35, 38, 39]
+    },
+    {
+        "id": 38,
+        "gender": "girl",
+        "cognitive_level": "Basic",
+        "behavioral_difficulty": 2,
+        "friends": [36, 37, 40]
+    },
+    {
+        "id": 39,
+        "gender": "boy",
+        "cognitive_level": "Advanced",
+        "behavioral_difficulty": 3,
+        "friends": [37, 40, 41]
+    },
+    {
+        "id": 40,
+        "gender": "girl",
+        "cognitive_level": "Intermediate",
+        "behavioral_difficulty": 1,
+        "friends": [38, 39, 42]
+    },
+    {
+        "id": 41,
+        "gender": "boy",
+        "cognitive_level": "Basic",
+        "behavioral_difficulty": 2,
+        "friends": [39, 42, 43]
+    },
+    {
+        "id": 42,
+        "gender": "girl",
+        "cognitive_level": "Advanced",
+        "behavioral_difficulty": 1,
+        "friends": [40, 41, 44]
+    },
+    {
+        "id": 43,
+        "gender": "boy",
+        "cognitive_level": "Intermediate",
+        "behavioral_difficulty": 4,
+        "friends": [41, 44, 45]
+    },
+    {
+        "id": 44,
+        "gender": "girl",
+        "cognitive_level": "Basic",
+        "behavioral_difficulty": 3,
+        "friends": [42, 43, 46]
+    },
+    {
+        "id": 45,
+        "gender": "boy",
+        "cognitive_level": "Advanced",
+        "behavioral_difficulty": 1,
+        "friends": [43, 46, 47]
+    },
+    {
+        "id": 46,
+        "gender": "girl",
+        "cognitive_level": "Intermediate",
+        "behavioral_difficulty": 2,
+        "friends": [44, 45, 48]
+    },
+    {
+        "id": 47,
+        "gender": "boy",
+        "cognitive_level": "Basic",
+        "behavioral_difficulty": 5,
+        "friends": [45, 48, 49]
+    },
+    {
+        "id": 48,
+        "gender": "girl",
+        "cognitive_level": "Advanced",
+        "behavioral_difficulty": 2,
+        "friends": [46, 47, 50]
+    },
+    {
+        "id": 49,
+        "gender": "boy",
+        "cognitive_level": "Intermediate",
+        "behavioral_difficulty": 3,
+        "friends": [47, 50, 43]
+    },
+    {
+        "id": 50,
+        "gender": "girl",
+        "cognitive_level": "Basic",
+        "behavioral_difficulty": 4,
+        "friends": [48, 49, 44]
+    }
+]
