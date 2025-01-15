@@ -1,75 +1,60 @@
-const allStudents = require('./students1.json');
-const { checkTwoFriends, checkFriendInGroup } = require('./Helpers/checks');
-const testFunction = require('./test');
-const shuffle = require('./Helpers/shuffle');
+// const allStudents = require('./students.json');
+const testFunction = require('./Helpers/test');
+const createRandomGroups = require('./data/generateRandData')
+const sortStudents = require('./sorting/sortStudents')
 
+const allStudents = createRandomGroups(100)
 
-// V1, only sorts based on friendship preference, does not allow students to exclude friends
-function sortStudents(astudents) {
-    let groupOne = [];
-    let groupTwo = [];
+const repeatgroups = () => {
+    let acceptableGroup = false;
 
-    let students = astudents
-    shuffle(students)
-
-    const isStudentInGroup = (studentId, group) => group.includes(studentId);
-
-    for (let i = 0; i < students.length; i++) {
-        const student = students[i];
-
-        if (isStudentInGroup(student.id, groupOne) || isStudentInGroup(student.id, groupTwo)) {
-            continue;
+    let iterations = 0
+    maxIterations = 1000
+    while (acceptableGroup == false) {
+        if (iterations > maxIterations) {
+            console.log('max iterations')
+            break;
         }
+        iterations++
+        [groupOne, groupTwo] = sortStudents(allStudents)
+        // console.log(acceptableGroup)
+        const results = testFunction(allStudents, groupOne, groupTwo)
 
-        // Case One: A friend is found in both groups
-        if (checkFriendInGroup(student, groupOne) && checkFriendInGroup(student, groupTwo)) {
-            groupOne.length > groupTwo.length ? groupTwo.push(student.id) : groupOne.push(student.id);
-            continue;
-        }
-
-        // Case Two: A friend is found in one group
-        if (checkFriendInGroup(student, groupOne)) {
-            groupOne.push(student.id);
-            continue;
-        } else if (checkFriendInGroup(student, groupTwo)) {
-            groupTwo.push(student.id);
-            continue;
-        }
-
-        // Case Three: No friends in either group
-        let added = false;
-        for (let j = i + 1; j < students.length; j++) {
-            const studentTwo = students[j];
-            if (checkTwoFriends(student, studentTwo)) {
-                groupOne.length > groupTwo.length
-                    ? groupTwo.push(student.id, studentTwo.id)
-                    : groupOne.push(student.id, studentTwo.id);
-                added = true;
-                break;
-            }
-        }
-
-        // Fallback: Add student to the smaller group if no match is found
-        if (!added) {
-            groupOne.length <= groupTwo.length ? groupOne.push(student.id) : groupTwo.push(student.id);
+        if (results.groep1.leerlingenZonderVrienden.length == 0 && results.groep2.leerlingenZonderVrienden.length == 0) {
+            acceptableGroup = true
         }
     }
-
-    return [groupOne, groupTwo];
+    const groups = [groupOne, groupTwo]
+    return { groups, iterations }
 }
 
-let acceptableGroup = false;
+// const result = repeatgroups()
+// const group1 = result.groups[0]
+// const group2 = result.groups[1]
+// console.log(result.groups)
+// console.log(testFunction(allStudents, group1, group2))
 
-let iterations = 0
 
-while (acceptableGroup == false) {
-    iterations++
-    [groupOne, groupTwo] = sortStudents(allStudents)
-    // console.log(acceptableGroup)
-    if (testFunction(allStudents, groupOne, groupTwo).allStudentsHaveFriends == true) {
-        acceptableGroup = true
-    }
+let Totaliterations = 0;
+let TotalCogDif = 0
+let totalBehDif = 0
+let totalSizeDif = 0
+
+const RepeatFunc = 100000
+for (let i = 0; i < RepeatFunc; i++) {
+    const resultGroups = repeatgroups()
+    const groupOne = resultGroups.groups[0]
+    const groupTwo = resultGroups.groups[1]
+
+    const result = testFunction(allStudents, groupOne, groupTwo)
+
+    Totaliterations = resultGroups.iterations + Totaliterations
+    const cognitiveDifference = Math.abs(result.groep1.gemiddeldCognitief - result.groep2.gemiddeldCognitief)
+    TotalCogDif = TotalCogDif + cognitiveDifference
 }
 
-console.log(testFunction(allStudents, groupOne, groupTwo))
-console.log("iterations for this outcome: " + iterations)
+let averageIterations = Totaliterations / RepeatFunc
+let averageCogDif = TotalCogDif / RepeatFunc
+
+console.log("iterations: " + averageIterations)
+console.log("avg cognitive difference: " + averageCogDif)
