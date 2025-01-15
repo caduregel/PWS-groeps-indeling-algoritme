@@ -7,6 +7,7 @@ function testFunction(leerlingen, groep1, groep2) {
     function analyseerGroep(groepIds) {
         // Initialiseer statistieken voor de groep
         const stats = {
+            groepsGrote: 0,
             jongens: 0,
             meisjes: 0,
             leerlingenZonderVrienden: [], // Veranderd naar array met IDs van leerlingen zonder vrienden
@@ -48,6 +49,7 @@ function testFunction(leerlingen, groep1, groep2) {
         // Bereken gemiddeldes
         stats.gemiddeldCognitief = totaalCognitief / groepIds.length;
         stats.gemiddeldGedrag = totaalGedrag / groepIds.length;
+        stats.groepsGrote = groepIds.length
 
         return stats;
     }

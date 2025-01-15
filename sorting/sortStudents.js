@@ -1,8 +1,8 @@
 const shuffle = require('../Helpers/shuffle');
 const { checkTwoFriends, checkFriendInGroup } = require('../Helpers/checks');
+const testFunction = require('../Helpers/test');
 
-
-function sortStudents(astudents) {
+function stepOne(astudents) {
     let groupOne = [];
     let groupTwo = [];
 
@@ -53,6 +53,50 @@ function sortStudents(astudents) {
     }
 
     return [groupOne, groupTwo];
+}
+
+const sortStudents = (allStudents) => {
+    let allFriends = false;
+    let acceptableSizes = false
+    let acceptableGenderDif = false
+
+    let iterations = 0
+    maxIterations = 100
+
+    while (allFriends == false || acceptableSizes == false || acceptableGenderDif == false) {
+        if (iterations > maxIterations) {
+            console.log("to many iterations")
+        }
+        iterations++
+        [groupOne, groupTwo] = stepOne(allStudents)
+        const results = testFunction(allStudents, groupOne, groupTwo)
+
+        // find out if all students have friends
+        if (results.groep1.leerlingenZonderVrienden.length == 0 && results.groep2.leerlingenZonderVrienden.length == 0) {
+            allFriends = true
+        }
+
+        // find out if the group sizes dont differ by more than 10% of a 50/50split
+        const sizeDif = Math.abs(results.groep1.groepsGrote - results.groep2.groepsGrote)
+        const fiftySplit = allStudents.length / 20
+        if (sizeDif < fiftySplit) {
+            acceptableSizes = true
+        }
+
+        // verschil in jongen/meisje verdeling
+        const groupOneBoyToGirl = results.groep1.jongens / results.groep1.meisjes
+        const groupTwoBoyToGirl = results.groep2.jongens / results.groep2.meisjes
+        const totalBoys = results.groep1.jongens + results.groep2.jongens
+        const totalGirls = results.groep1.meisjes + results.groep2.meisjes
+        const maxBGRatio = totalBoys / totalGirls
+        const acceptableBGRation = maxBGRatio + (maxBGRatio / 5)
+        console.log(acceptableBGRation)
+        if (groupOneBoyToGirl <= acceptableBGRation && groupTwoBoyToGirl <= acceptableBGRation) {
+            acceptableGenderDif = true
+        }
+    }
+    const groups = [groupOne, groupTwo]
+    return { groups, iterations }
 }
 
 module.exports = sortStudents
