@@ -90,7 +90,6 @@ const sortStudents = (allStudents) => {
         const totalGirls = results.groep1.meisjes + results.groep2.meisjes
         const maxBGRatio = totalBoys / totalGirls
         const acceptableBGRation = maxBGRatio + (maxBGRatio / 5)
-        console.log(acceptableBGRation)
         if (groupOneBoyToGirl <= acceptableBGRation && groupTwoBoyToGirl <= acceptableBGRation) {
             acceptableGenderDif = true
         }
