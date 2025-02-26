@@ -32,5 +32,4 @@ const createRandomGroups = (hoeveelheid) => {
     return leerlingen
 }
 
-
 module.exports = createRandomGroups

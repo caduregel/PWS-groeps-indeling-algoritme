@@ -14,10 +14,10 @@ function testFunction(leerlingen, groep1, groep2) {
             gemiddeldCognitief: 0,
             gemiddeldGedrag: 0
         };
-
         // Tel jongens en meisjes
         groepIds.forEach(id => {
-            if (leerlingDict[id].gender === 'boy') {
+            console.log(leerlingen[id])
+            if (leerlingen[id].gender === 'boy') {
                 stats.jongens++;
             } else {
                 stats.meisjes++;
@@ -29,18 +29,18 @@ function testFunction(leerlingen, groep1, groep2) {
         let totaalGedrag = 0;
 
         groepIds.forEach(id => {
-            const leerling = leerlingDict[id];
-            
+            const leerling = leerlingen[id];
+
             // Check of de leerling vrienden heeft in de groep
-            const heeftVriendenInGroep = leerling.friends.some(vriendId => 
+            const heeftVriendenInGroep = leerling.friends.some(vriendId =>
                 groepIds.includes(vriendId)
             );
-            
+
             // Als de leerling geen vrienden heeft, voeg ID toe aan de lijst
             if (!heeftVriendenInGroep) {
                 stats.leerlingenZonderVrienden.push(id);
             }
-            
+
             // Tel op voor gemiddeldes
             totaalCognitief += leerling.cognitive_level;
             totaalGedrag += leerling.behavioral_difficulty;
